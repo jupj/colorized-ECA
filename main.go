@@ -30,7 +30,8 @@ func printECA(rule int) {
 }
 
 type cell struct {
-	on bool
+	on      bool
+	prevgen byte
 }
 
 // nextGen returns the next generation for an ECA, for a given rule
@@ -50,6 +51,7 @@ func nextGen(grid []cell, rule int) []cell {
 		}
 		// next generation is "on" if rule has the state bit on
 		next[i].on = rule&(1<<state) != 0
+		next[i].prevgen = state
 	}
 	return next
 }
@@ -57,7 +59,7 @@ func nextGen(grid []cell, rule int) []cell {
 func printGrid(grid []cell) {
 	for _, c := range grid {
 		if c.on {
-			fmt.Print("#")
+			fmt.Printf("%d", c.prevgen)
 		} else {
 			fmt.Print(" ")
 		}
