@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	const n = 64 // number of iterations
+	const n = 32 // number of iterations
 
 	// Generate color and bw pngs for all elementary cellular automata
 	for i := 0; i < 256; i++ {
@@ -56,7 +56,7 @@ func plotECA(filename string, rule, n int, useColor bool) error {
 		color.White,
 	})
 
-	size := 10 // cell size in pixels
+	size := 5 // cell size in pixels
 	img := image.NewPaletted(image.Rect(0, 0, n*size, n*size), pal)
 	b := img.Bounds()
 
